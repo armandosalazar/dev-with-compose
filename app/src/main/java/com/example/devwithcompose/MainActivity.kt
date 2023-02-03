@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -27,10 +29,52 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 //                    Greeting("Android")
-                    DefaultPreview()
+//                    DefaultPreview()
+//                    ButtonText()
+                    MediaItem()
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun MediaItem() {
+    Column {
+        Box(
+            modifier = Modifier
+                .height(200.dp)
+                .fillMaxWidth()
+                .background(Color.Red)
+        ) {}
+        Box(
+            modifier = Modifier
+                .background(MaterialTheme.colors.secondary)
+                .fillMaxWidth()
+                .padding(16.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text("Title 1")
+        }
+    }
+}
+
+// @Preview(showBackground = true, widthDp = 200, heightDp = 100)
+@Composable
+fun ButtonText() {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = "Hello World",
+            modifier = Modifier
+                .clickable { }
+                .background(Color.Cyan)
+                .border(2.dp, Color.Blue)
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+        )
     }
 }
 
@@ -39,7 +83,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(text = "Hello $name!", modifier = modifier)
 }
 
-@Preview(showBackground = true, name = "Android Greeting", showSystemUi = true)
+//@Preview(showBackground = true, name = "Android Greeting", showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     DevWithComposeTheme {
