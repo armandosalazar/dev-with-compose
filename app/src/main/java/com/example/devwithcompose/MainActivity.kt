@@ -3,6 +3,7 @@ package com.example.devwithcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -25,6 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import coil.compose.rememberAsyncImagePainter
 import com.example.devwithcompose.ui.theme.DevWithComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -50,13 +52,16 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun MediaItem() {
+    val painter = rememberAsyncImagePainter(model = "https://loremflickr.com/640/360");
     Column {
         Box(
             modifier = Modifier
                 .height(200.dp)
-                .fillMaxWidth()
-                .background(Color.Red)
-        ) {}
+                .fillMaxWidth(),
+            contentAlignment = Alignment.Center
+        ) {
+            Image(painter = painter, contentDescription = null)
+        }
         Box(
             modifier = Modifier
                 .background(MaterialTheme.colors.secondary)
