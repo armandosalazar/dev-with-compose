@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
 import com.example.devwithcompose.ui.theme.DevWithComposeTheme
 
@@ -57,15 +58,19 @@ fun MediaItem() {
     Column {
         Box(
             modifier = Modifier
-                .height(200.dp)
+//                .height(200.dp)
+                .fillMaxHeight()
                 .fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            Image(
-                painter = rememberAsyncImagePainter(model = "https://loremflickr.com/360/360"),
-                contentDescription = null,
-                modifier = Modifier.clip(CircleShape)
-            )
+            Column {
+                Image(
+                    painter = rememberAsyncImagePainter(model = "https://loremflickr.com/360/360"),
+                    contentDescription = null,
+                    modifier = Modifier.clip(CircleShape)
+                )
+                AsyncImage(model = "https://loremflickr.com/360/360", contentDescription = null)
+            }
         }
         Box(
             modifier = Modifier
