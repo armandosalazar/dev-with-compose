@@ -54,7 +54,6 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun MediaItem() {
-    val painter = rememberAsyncImagePainter(model = "https://loremflickr.com/360/360");
     Column {
         Box(
             modifier = Modifier
@@ -63,7 +62,7 @@ fun MediaItem() {
             contentAlignment = Alignment.Center
         ) {
             Image(
-                painter = painter,
+                painter = rememberAsyncImagePainter(model = "https://loremflickr.com/360/360"),
                 contentDescription = null,
                 modifier = Modifier.clip(CircleShape)
             )
