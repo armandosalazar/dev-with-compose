@@ -8,12 +8,14 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -52,7 +54,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun MediaItem() {
-    val painter = rememberAsyncImagePainter(model = "https://loremflickr.com/640/360");
+    val painter = rememberAsyncImagePainter(model = "https://loremflickr.com/360/360");
     Column {
         Box(
             modifier = Modifier
@@ -60,7 +62,11 @@ fun MediaItem() {
                 .fillMaxWidth(),
             contentAlignment = Alignment.Center
         ) {
-            Image(painter = painter, contentDescription = null)
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier.clip(CircleShape)
+            )
         }
         Box(
             modifier = Modifier
